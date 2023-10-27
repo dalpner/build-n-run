@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7b0nhgjdxa4s"]
+
+[ext_resource type="Script" path="res://scene/world/jump_pad.gd" id="1_jravm"]
+[ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="1_x3v1b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baghq"]
+size = Vector2(18, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxjsn"]
+size = Vector2(18, 3.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1wl"]
+atlas = ExtResource("1_x3v1b")
+region = Rect2(126, 90, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3608"]
+atlas = ExtResource("1_x3v1b")
+region = Rect2(144, 90, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8cmoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3608")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3608")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3608")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1wl")
+}],
+"loop": false,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yv7of"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 4]
+}
+
+[sub_resource type="Animation" id="Animation_8f03c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hb2fw"]
+_data = {
+"Jump": SubResource("Animation_yv7of"),
+"RESET": SubResource("Animation_8f03c")
+}
+
+[node name="JumpPad" type="StaticBody2D"]
+script = ExtResource("1_jravm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_baghq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_lxjsn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8cmoq")
+animation = &"Jump"
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hb2fw")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dubgnuxpedghq"]
+[gd_scene load_steps=9 format=3 uid="uid://dubgnuxpedghq"]
 
 [ext_resource type="PackedScene" uid="uid://dl2yload2l4j0" path="res://scene/player/player.tscn" id="1_6i5td"]
 [ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="2_hrlpw"]
 [ext_resource type="PackedScene" uid="uid://dxbmkqlhq45bo" path="res://scene/world/flag.tscn" id="3_sdtjx"]
 [ext_resource type="PackedScene" uid="uid://cj5wtvyn4f52r" path="res://scene/world/background.tscn" id="4_6hveq"]
 [ext_resource type="PackedScene" uid="uid://bfb7r3x0tbsyg" path="res://scene/world/Key.tscn" id="5_wncrt"]
+[ext_resource type="PackedScene" uid="uid://b7b0nhgjdxa4s" path="res://scene/world/jump_pad.tscn" id="6_pak6d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jkwk"]
 texture = ExtResource("2_hrlpw")
@@ -600,7 +601,17 @@ layer_0/tile_data = PackedInt32Array(1179650, 327680, 4, 1245186, 65536, 0, 1245
 position = Vector2(776, 312)
 
 [node name="Player" parent="." instance=ExtResource("1_6i5td")]
-position = Vector2(64, 264)
+position = Vector2(656, 296)
 
 [node name="Key" parent="." instance=ExtResource("5_wncrt")]
-position = Vector2(745, 340)
+position = Vector2(512, 352)
+
+[node name="Key2" parent="." instance=ExtResource("5_wncrt")]
+position = Vector2(736, 336)
+
+[node name="Key3" parent="." instance=ExtResource("5_wncrt")]
+position = Vector2(312, 304)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_pak6d")]
+position = Vector2(696, 344)
+rotation = 0.785398

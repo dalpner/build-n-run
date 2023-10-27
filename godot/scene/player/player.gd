@@ -9,6 +9,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = get_node("AnimationPlayer")
 @onready var sprite = get_node("AnimatedSprite2D")
 
+func jump_pad(factor):
+	velocity.y = JUMP_VELOCITY * factor
+	velocity.x = JUMP_VELOCITY * -2 * factor
+
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -32,10 +37,11 @@ func _physics_process(delta):
 		velocity.x = direction * SPEED
 		anim.play("Run")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if velocity.y != 0:
 			anim.play("Jump")
+			rotate(velocity.x)
 		if velocity.y == 0:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
 			anim.play("Idle")
 
 	move_and_slide()
