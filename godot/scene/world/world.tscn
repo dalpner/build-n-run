@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dubgnuxpedghq"]
+[gd_scene load_steps=10 format=3 uid="uid://dubgnuxpedghq"]
 
 [ext_resource type="PackedScene" uid="uid://dl2yload2l4j0" path="res://scene/player/player.tscn" id="1_6i5td"]
+[ext_resource type="Script" path="res://scene/world/Button.gd" id="2_1gid2"]
 [ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="2_hrlpw"]
 [ext_resource type="PackedScene" uid="uid://dxbmkqlhq45bo" path="res://scene/world/flag.tscn" id="3_sdtjx"]
 [ext_resource type="PackedScene" uid="uid://cj5wtvyn4f52r" path="res://scene/world/background.tscn" id="4_6hveq"]
@@ -591,6 +592,14 @@ sources/0 = SubResource("TileSetAtlasSource_1jkwk")
 
 [node name="Background" parent="." instance=ExtResource("4_6hveq")]
 
+[node name="Button" type="Button" parent="."]
+offset_left = 160.0
+offset_top = 152.0
+offset_right = 624.0
+offset_bottom = 208.0
+text = "END HIS GAME"
+script = ExtResource("2_1gid2")
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_mcr3u")
 cell_quadrant_size = 18
@@ -601,7 +610,7 @@ layer_0/tile_data = PackedInt32Array(1179650, 327680, 4, 1245186, 65536, 0, 1245
 position = Vector2(776, 312)
 
 [node name="Player" parent="." instance=ExtResource("1_6i5td")]
-position = Vector2(656, 296)
+position = Vector2(656, 288)
 
 [node name="Key" parent="." instance=ExtResource("5_wncrt")]
 position = Vector2(512, 352)
@@ -615,3 +624,5 @@ position = Vector2(312, 304)
 [node name="StaticBody2D" parent="." instance=ExtResource("6_pak6d")]
 position = Vector2(696, 344)
 rotation = 0.785398
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
