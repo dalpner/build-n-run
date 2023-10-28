@@ -153,8 +153,8 @@ script = ExtResource("1_g0ntd")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 limit_left = 0
-limit_top = -200
-limit_bottom = 450
+limit_top = 0
+limit_bottom = 550
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l3dby")

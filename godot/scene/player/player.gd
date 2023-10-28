@@ -12,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func jump_pad(factor):
 	velocity.y = JUMP_VELOCITY * factor
-	velocity.x = JUMP_VELOCITY * -2 * factor
 
 
 func _physics_process(delta):
