@@ -158,11 +158,11 @@ limit_bottom = 550
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
-[node name="Keycounter" type="Label" parent="Camera2D/CanvasLayer"]
+[node name="Label" type="Label" parent="Camera2D/CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(2.43, 2.43)
-text = "Keys: 0"
+text = "Penis"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l3dby")

@@ -6,9 +6,12 @@ const JUMP_VELOCITY = -300.0
 var jump_direction = 1
 
 var collectCount = 0
+var updatedText
 
 func keyCollected():
 	collectCount += 1
+	updatedText = "Keys: " + str(collectCount)
+	get_node("Camera2D/CanvasLayer/Keycounter").set("text", updatedText)
 	print(collectCount)
 	
 func finishGame():
