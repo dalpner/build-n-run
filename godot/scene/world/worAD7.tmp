@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="2_hrlpw"]
 [ext_resource type="PackedScene" uid="uid://dxbmkqlhq45bo" path="res://scene/world/flag.tscn" id="3_sdtjx"]
 [ext_resource type="PackedScene" uid="uid://cj5wtvyn4f52r" path="res://scene/world/background.tscn" id="4_6hveq"]
-[ext_resource type="PackedScene" uid="uid://bfb7r3x0tbsyg" path="res://scene/world/Key.tscn" id="5_wncrt"]
 [ext_resource type="Script" path="res://scene/world/Flag.gd" id="6_3wvgo"]
 [ext_resource type="PackedScene" uid="uid://b7b0nhgjdxa4s" path="res://scene/world/jump_pad.tscn" id="6_pak6d"]
 [ext_resource type="Script" path="res://scene/world/LevelBorder.gd" id="8_yndtn"]
@@ -593,6 +592,23 @@ sources/0 = SubResource("TileSetAtlasSource_1jkwk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogkff"]
 size = Vector2(18, 13)
 
+[sub_resource type="GDScript" id="GDScript_ee4nm"]
+script/source = "extends Node
+
+
+
+func _on_body_entered(body):
+	if body.name == \"Player\":
+		var tween = create_tween()
+		
+		tween.tween_property(self, \"position\", position + Vector2(0,-20), 0.3)
+		tween.tween_property(self, \"modulate:a\", 0.0, 0.3)
+		
+		
+		
+		tween.tween_callback(self.queue_free)
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovbnx"]
 
 [node name="World" type="Node2D"]
@@ -640,15 +656,7 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_ogkff")
 
 [node name="Keys" type="Node" parent="."]
-
-[node name="Key" parent="Keys" instance=ExtResource("5_wncrt")]
-position = Vector2(328, 408)
-
-[node name="Key2" parent="Keys" instance=ExtResource("5_wncrt")]
-position = Vector2(528, 456)
-
-[node name="Key3" parent="Keys" instance=ExtResource("5_wncrt")]
-position = Vector2(688, 408)
+script = SubResource("GDScript_ee4nm")
 
 [node name="LevelBorder" type="Node" parent="."]
 script = ExtResource("8_yndtn")
