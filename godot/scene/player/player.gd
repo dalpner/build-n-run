@@ -15,7 +15,7 @@ func keyCollected():
 	print(collectCount)
 	
 func finishGame():
-	if collectCount >= 3:
+	if collectCount >= 5:
 		get_tree().change_scene_to_file("res://scene/world/game_over.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
