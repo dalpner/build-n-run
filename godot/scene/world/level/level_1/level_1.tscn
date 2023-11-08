@@ -1,0 +1,196 @@
+[gd_scene load_steps=13 format=3 uid="uid://clphsce4ktdx2"]
+
+[ext_resource type="PackedScene" uid="uid://cj5wtvyn4f52r" path="res://scene/world/background.tscn" id="1_y87d5"]
+[ext_resource type="TileSet" uid="uid://o55jpwl5whag" path="res://scene/world/world.tres" id="2_ag38r"]
+[ext_resource type="PackedScene" uid="uid://dl2yload2l4j0" path="res://scene/player/player.tscn" id="3_utpse"]
+[ext_resource type="Script" path="res://scene/world/Flag.gd" id="4_0xuv1"]
+[ext_resource type="PackedScene" uid="uid://dxbmkqlhq45bo" path="res://scene/world/flag.tscn" id="5_fvsqr"]
+[ext_resource type="PackedScene" uid="uid://b7b0nhgjdxa4s" path="res://scene/world/jump_pad.tscn" id="6_f4u84"]
+[ext_resource type="PackedScene" uid="uid://bfb7r3x0tbsyg" path="res://scene/world/Key.tscn" id="7_ip621"]
+[ext_resource type="Script" path="res://scene/world/LevelBorder.gd" id="8_4qyet"]
+[ext_resource type="PackedScene" uid="uid://db7xl5tbeewy3" path="res://scene/world/key_box.tscn" id="9_h5lw2"]
+[ext_resource type="PackedScene" uid="uid://bsi2ljlo67qbj" path="res://scene/world/boom_box.tscn" id="10_mhos3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogkff"]
+size = Vector2(18, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovbnx"]
+size = Vector2(433.505, 14.22)
+
+[node name="Level_3" type="Node2D"]
+position = Vector2(16, -8)
+
+[node name="Background" parent="." instance=ExtResource("1_y87d5")]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(40, 64)
+tile_set = ExtResource("2_ag38r")
+cell_quadrant_size = 18
+format = 2
+layer_0/tile_data = PackedInt32Array(1441792, 65536, 5, 1441793, 131072, 5, 1441794, 131072, 5, 1441795, 196608, 5, 1507328, 65536, 6, 1572864, 65536, 7, 1507331, 196608, 7, 1572866, 196608, 7, 1507330, 262144, 0, 1572865, 131072, 7, 1507329, 131072, 6, 1441800, 65536, 5, 1441805, 196608, 5, 1441801, 131072, 5, 1441802, 131072, 5, 1441803, 131072, 5, 1441804, 131072, 5, 1507341, 196608, 6, 1572877, 196608, 6, 1441809, 65536, 5, 1507345, 65536, 6, 1572881, 65536, 6, 1638414, 131072, 5, 1638415, 131072, 5, 1638416, 131072, 5, 1638417, 327680, 1, 1638413, 262144, 1, 1441810, 131072, 5, 1441811, 131072, 5, 1441812, 131072, 5, 1441813, 131072, 5, 1441814, 196608, 5, 1114136, 65536, 6, 1048600, 65536, 6, 983064, 65536, 5, 983065, 196608, 5, 524316, 65536, 5, 524317, 196608, 5, 589852, 65536, 6, 655388, 65536, 6, 589853, 196608, 6, 655389, 196608, 6, 720925, 196608, 6, 786461, 196608, 7, 786460, 65536, 7, 720924, 65536, 6, 1179672, 65536, 6, 1245208, 65536, 7, 1048601, 196608, 6, 1114137, 196608, 6, 1179673, 196608, 6, 1245209, 196608, 7, 786466, 65536, 5, 852002, 65536, 6, 917538, 65536, 7, 786467, 131072, 5, 852003, 131072, 6, 917539, 131072, 7, 786468, 131072, 5, 786469, 131072, 5, 786470, 196608, 5, 524335, 65536, 5, 524336, 131072, 5, 524337, 131072, 5, 524338, 196608, 5, 983093, 196608, 5, 983097, 65536, 5, 1048629, 196608, 6, 1114165, 196608, 6, 1048633, 65536, 6, 1114169, 65536, 7, 1179701, 196608, 6, 1245237, 196608, 6, 1310774, 131072, 4, 1310775, 131072, 4, 1310776, 131072, 4, 1310773, 262144, 1, 1310777, 131072, 5, 983098, 196608, 5, 983092, 65536, 5, 1048634, 196608, 6, 1114170, 196608, 7, 1048628, 65536, 6, 1114164, 65536, 6, 1179700, 65536, 6, 1245236, 65536, 6, 1376308, 65536, 7, 1376314, 131072, 7, 1376309, 131072, 7, 1376310, 131072, 7, 1376311, 131072, 7, 1376312, 131072, 7, 1376313, 131072, 7, 1310778, 131072, 5, 1310772, 65536, 6, 1310779, 131072, 5, 1310780, 131072, 5, 1376317, 196608, 7, 1376315, 131072, 7, 1376316, 131072, 7, 1310781, 196608, 5, 917542, 196608, 7, 917541, 131072, 7, 917540, 131072, 7, 852006, 196608, 6, 852004, 131072, 6, 852005, 131072, 6, 589874, 196608, 7, 589872, 131072, 7, 589873, 131072, 7, 589871, 65536, 7, 1245184, 720896, 6, 1310720, 720896, 6, 1376256, 720896, 6)
+
+[node name="Player" parent="." instance=ExtResource("3_utpse")]
+position = Vector2(80, 384)
+
+[node name="Instruction" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 134.0
+offset_right = 255.0
+offset_bottom = 160.0
+text = "Collect the 5 Keys and return!"
+
+[node name="Flag" type="Node" parent="."]
+script = ExtResource("4_0xuv1")
+
+[node name="Flag" parent="Flag" instance=ExtResource("5_fvsqr")]
+position = Vector2(64, 352)
+
+[node name="FinishArea" type="Area2D" parent="Flag"]
+position = Vector2(64, 352)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag/FinishArea"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ogkff")
+
+[node name="Jump_Pads" type="Node" parent="."]
+
+[node name="Jump_Pad" parent="Jump_Pads" instance=ExtResource("6_f4u84")]
+position = Vector2(415, 398)
+
+[node name="Jump_Pad2" parent="Jump_Pads" instance=ExtResource("6_f4u84")]
+position = Vector2(456, 286)
+
+[node name="Jump_Pad3" parent="Jump_Pads" instance=ExtResource("6_f4u84")]
+position = Vector2(1024, 366)
+
+[node name="Jump_Pad4" parent="Jump_Pads" instance=ExtResource("6_f4u84")]
+position = Vector2(984, 286)
+
+[node name="Keys" type="Node" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(304, 440)
+
+[node name="Key2" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(584, 200)
+
+[node name="Key3" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(944, 360)
+
+[node name="Key4" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(856, 176)
+
+[node name="Key5" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(352, 256)
+
+[node name="LevelBorder" type="Node" parent="."]
+script = ExtResource("8_4qyet")
+
+[node name="Level" type="Area2D" parent="LevelBorder"]
+position = Vector2(64, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBorder/Level"]
+position = Vector2(736, 560)
+rotation = -3.14159
+scale = Vector2(5.145, 0.679999)
+shape = SubResource("RectangleShape2D_ovbnx")
+
+[node name="Keybox" type="Node" parent="."]
+
+[node name="firstKey" type="Node" parent="Keybox"]
+
+[node name="Keybox" parent="Keybox/firstKey" instance=ExtResource("9_h5lw2")]
+position = Vector2(288, 416)
+
+[node name="Keybox2" parent="Keybox/firstKey" instance=ExtResource("9_h5lw2")]
+position = Vector2(304, 416)
+
+[node name="Keybox3" parent="Keybox/firstKey" instance=ExtResource("9_h5lw2")]
+position = Vector2(320, 416)
+
+[node name="stair" type="Node" parent="Keybox"]
+
+[node name="Keybox" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(688, 240)
+
+[node name="Keybox2" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(704, 224)
+
+[node name="Keybox3" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(720, 208)
+
+[node name="Keybox4" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(736, 192)
+
+[node name="Keybox5" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(752, 192)
+
+[node name="Keybox6" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(768, 192)
+
+[node name="Keybox7" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(784, 192)
+
+[node name="Keybox8" parent="Keybox/stair" instance=ExtResource("9_h5lw2")]
+position = Vector2(800, 192)
+
+[node name="lastkey" type="Node" parent="Keybox"]
+
+[node name="Keybox" parent="Keybox/lastkey" instance=ExtResource("9_h5lw2")]
+position = Vector2(976, 352)
+
+[node name="Keybox2" parent="Keybox/lastkey" instance=ExtResource("9_h5lw2")]
+position = Vector2(976, 368)
+
+[node name="Keybox3" parent="Keybox/lastkey" instance=ExtResource("9_h5lw2")]
+position = Vector2(992, 352)
+
+[node name="Keybox4" parent="Keybox/lastkey" instance=ExtResource("9_h5lw2")]
+position = Vector2(992, 368)
+
+[node name="entrance" type="Node" parent="Keybox"]
+
+[node name="Keybox" parent="Keybox/entrance" instance=ExtResource("9_h5lw2")]
+position = Vector2(128, 416)
+
+[node name="Keybox2" parent="Keybox/entrance" instance=ExtResource("9_h5lw2")]
+position = Vector2(144, 416)
+
+[node name="Keybox3" parent="Keybox/entrance" instance=ExtResource("9_h5lw2")]
+position = Vector2(160, 416)
+
+[node name="Keybox4" parent="Keybox/entrance" instance=ExtResource("9_h5lw2")]
+position = Vector2(176, 416)
+
+[node name="BoomBox" type="Node" parent="."]
+
+[node name="Entrance" type="Node" parent="BoomBox"]
+
+[node name="BoomBox" parent="BoomBox/Entrance" instance=ExtResource("10_mhos3")]
+position = Vector2(128, 400)
+
+[node name="BoomBox2" parent="BoomBox/Entrance" instance=ExtResource("10_mhos3")]
+position = Vector2(128, 384)
+
+[node name="BoomBox3" parent="BoomBox/Entrance" instance=ExtResource("10_mhos3")]
+position = Vector2(128, 368)
+
+[node name="BoomBox4" parent="BoomBox/Entrance" instance=ExtResource("10_mhos3")]
+position = Vector2(128, 352)
+
+[node name="Stair" type="Node" parent="BoomBox"]
+
+[node name="BoomBox" parent="BoomBox/Stair" instance=ExtResource("10_mhos3")]
+position = Vector2(544, 192)
+
+[node name="BoomBox2" parent="BoomBox/Stair" instance=ExtResource("10_mhos3")]
+position = Vector2(560, 208)
+
+[node name="BoomBox3" parent="BoomBox/Stair" instance=ExtResource("10_mhos3")]
+position = Vector2(576, 224)
+
+[node name="BoomBox4" parent="BoomBox/Stair" instance=ExtResource("10_mhos3")]
+position = Vector2(592, 240)
+
+[connection signal="body_entered" from="Flag/FinishArea" to="Flag" method="_on_finish_area_body_entered"]
+[connection signal="body_exited" from="LevelBorder/Level" to="LevelBorder" method="_on_level_body_exited"]

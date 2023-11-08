@@ -1,8 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dl2yload2l4j0"]
+[gd_scene load_steps=14 format=3 uid="uid://dl2yload2l4j0"]
 
 [ext_resource type="Script" path="res://scene/player/player.gd" id="1_g0ntd"]
 [ext_resource type="Texture2D" uid="uid://dhuia31qg3nmg" path="res://assets/player/character_0004.png" id="2_3my3y"]
+[ext_resource type="Script" path="res://scene/player/CanvasLayer.gd" id="2_w4d2m"]
 [ext_resource type="Texture2D" uid="uid://56q5u1d66f1j" path="res://assets/player/character_0005.png" id="3_yo0fy"]
+[ext_resource type="AudioStream" uid="uid://chfy8o1l1qy7t" path="res://sounds/jump_1.mp3" id="4_sgvee"]
+[ext_resource type="AudioStream" uid="uid://7yt2ab5evxem" path="res://sounds/jump_2.mp3" id="5_etcej"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l3dby"]
 height = 24.0
@@ -157,14 +160,37 @@ limit_top = 0
 limit_bottom = 550
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("2_w4d2m")
 
 [node name="Keycounter" type="Label" parent="Camera2D/CanvasLayer"]
 offset_left = 16.0
-offset_top = 8.0
+offset_top = 64.0
 offset_right = 70.0
-offset_bottom = 34.0
+offset_bottom = 90.0
 scale = Vector2(2.43, 2.43)
 text = "Keys: 0"
+
+[node name="Time" type="Label" parent="Camera2D/CanvasLayer"]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 123.0
+offset_bottom = 34.0
+scale = Vector2(2.43, 2.43)
+text = "Time wasted: "
+
+[node name="Main" type="Button" parent="Camera2D/CanvasLayer"]
+offset_left = 1850.0
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 70.0
+text = "🏡"
+
+[node name="Timer" type="Timer" parent="Camera2D/CanvasLayer"]
+autostart = true
+
+[node name="Countdown" type="Timer" parent="Camera2D/CanvasLayer"]
+wait_time = 45.0
+autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_l3dby")
@@ -181,3 +207,15 @@ scale = Vector2(1, 1.04167)
 sprite_frames = SubResource("SpriteFrames_r802c")
 animation = &"Idle"
 flip_h = true
+
+[node name="Audios" type="Node" parent="."]
+
+[node name="jump_1" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("4_sgvee")
+
+[node name="jump_2" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("5_etcej")
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/Main" to="." method="_on_main_pressed"]
+[connection signal="timeout" from="Camera2D/CanvasLayer/Timer" to="Camera2D/CanvasLayer" method="_on_timer_timeout"]
+[connection signal="timeout" from="Camera2D/CanvasLayer/Countdown" to="Camera2D/CanvasLayer" method="_on_countdown_timeout"]

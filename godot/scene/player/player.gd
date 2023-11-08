@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -300.0
+var SPEED = 100.0
+var JUMP_VELOCITY = -300.0
 var jump_direction = 1
 
 var collectCount = 0
@@ -12,7 +12,8 @@ func keyCollected():
 	collectCount += 1
 	updatedText = "Keys: " + str(collectCount)
 	get_node("Camera2D/CanvasLayer/Keycounter").set("text", updatedText)
-	print(collectCount)
+	# SPEED = SPEED + 50
+	# JUMP_VELOCITY = JUMP_VELOCITY - 100
 	
 func finishGame():
 	if collectCount >= 5:
@@ -24,6 +25,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = get_node("AnimatedSprite2D")
 
 func jump_pad(factor):
+	$Audios/jump_2.play()
 	velocity.y = JUMP_VELOCITY * factor
 
 
@@ -40,6 +42,7 @@ func _physics_process(delta):
 	
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$Audios/jump_1.play()
 		velocity.y = JUMP_VELOCITY
 		jump_direction = direction
 		
@@ -65,3 +68,7 @@ func _physics_process(delta):
 			
 
 	move_and_slide()
+
+
+func _on_main_pressed():
+	get_tree().change_scene_to_file("res://scene/main/main.tscn")

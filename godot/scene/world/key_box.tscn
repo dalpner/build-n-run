@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://db7xl5tbeewy3"]
+
+[ext_resource type="Script" path="res://scene/world/key_box.gd" id="1_i1qoc"]
+[ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="2_j2amg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6g15"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgxpf"]
+atlas = ExtResource("2_j2amg")
+region = Rect2(180, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m8ii"]
+atlas = ExtResource("2_j2amg")
+region = Rect2(144, 18, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4fyd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgxpf")
+}],
+"loop": true,
+"name": &"Disapear",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m8ii")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jahsn"]
+size = Vector2(18, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihpgx"]
+size = Vector2(22, 18)
+
+[node name="Keybox" type="StaticBody2D"]
+script = ExtResource("1_i1qoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_c6g15")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x4fyd")
+animation = &"Disapear"
+autoplay = "Idle"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionVertical" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_jahsn")
+
+[node name="CollisionHorizontal" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ihpgx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

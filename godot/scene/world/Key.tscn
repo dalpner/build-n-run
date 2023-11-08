@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfb7r3x0tbsyg"]
+[gd_scene load_steps=7 format=3 uid="uid://bfb7r3x0tbsyg"]
 
 [ext_resource type="Script" path="res://Key.gd" id="1_ct7ru"]
 [ext_resource type="Texture2D" uid="uid://ckud0aqkxk3bu" path="res://assets/tiles/tiles_packed.png" id="1_eqddr"]
+[ext_resource type="AudioStream" uid="uid://br7di3rg7jmm7" path="res://sounds/key_collect.mp3" id="3_x7khs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8bon5"]
 size = Vector2(18, 12)
@@ -30,5 +31,8 @@ shape = SubResource("RectangleShape2D_8bon5")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_4qm31")
 animation = &"Idle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_x7khs")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

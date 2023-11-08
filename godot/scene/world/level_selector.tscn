@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://cjlosy17odooc"]
+
+[node name="Level_Selector" type="Node2D"]
+
+[node name="Level 1" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 54.0
+offset_right = 432.0
+offset_bottom = 270.0
+
+[node name="Level 2" type="Button" parent="."]
+offset_left = 528.0
+offset_top = 48.0
+offset_right = 912.0
+offset_bottom = 264.0
+
+[node name="Level 3" type="Button" parent="."]
+offset_left = 1008.0
+offset_top = 48.0
+offset_right = 1392.0
+offset_bottom = 264.0
+
+[node name="Level 4" type="Button" parent="."]
+offset_left = 1488.0
+offset_top = 48.0
+offset_right = 1872.0
+offset_bottom = 264.0
+
+[node name="Level 5" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 312.0
+offset_right = 432.0
+offset_bottom = 528.0
+
+[node name="Level 6" type="Button" parent="."]
+offset_left = 528.0
+offset_top = 312.0
+offset_right = 912.0
+offset_bottom = 528.0
+
+[node name="Level 7" type="Button" parent="."]
+offset_left = 1008.0
+offset_top = 312.0
+offset_right = 1392.0
+offset_bottom = 528.0
+
+[node name="Level 8" type="Button" parent="."]
+offset_left = 1488.0
+offset_top = 312.0
+offset_right = 1872.0
+offset_bottom = 528.0
+
+[node name="Level 9" type="Button" parent="."]
+offset_left = 48.0
+offset_top = 576.0
+offset_right = 432.0
+offset_bottom = 792.0
+
+[node name="Level 10" type="Button" parent="."]
+offset_left = 528.0
+offset_top = 576.0
+offset_right = 912.0
+offset_bottom = 792.0
+
+[node name="Level 11" type="Button" parent="."]
+offset_left = 1008.0
+offset_top = 576.0
+offset_right = 1392.0
+offset_bottom = 792.0
+
+[node name="Level 12" type="Button" parent="."]
+offset_left = 1488.0
+offset_top = 576.0
+offset_right = 1872.0
+offset_bottom = 792.0

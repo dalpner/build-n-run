@@ -7,8 +7,10 @@ func _on_body_entered(body):
 		var tween = create_tween()
 		if !collected:
 			body.keyCollected()
+			$AudioStreamPlayer.play()
 			collected = true
 		tween.tween_property(self, "position", position + Vector2(0,-20), 0.3)
 		tween.tween_property(self, "modulate:a", 0.0, 0.3)
+		await $AudioStreamPlayer.finished
 		tween.tween_callback(self.queue_free)
 		
