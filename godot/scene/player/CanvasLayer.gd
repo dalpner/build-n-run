@@ -9,3 +9,8 @@ func _on_timer_timeout():
 
 func _on_countdown_timeout():
 	get_tree().reload_current_scene()
+
+
+
+func _on_level_selector_pressed():
+	get_tree().change_scene_to_file("res://scene/world/level_selector.tscn")

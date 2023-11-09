@@ -178,7 +178,7 @@ offset_bottom = 34.0
 scale = Vector2(2.43, 2.43)
 text = "Time wasted: "
 
-[node name="Main" type="Button" parent="Camera2D/CanvasLayer"]
+[node name="Level_selector" type="Button" parent="Camera2D/CanvasLayer"]
 offset_left = 1850.0
 offset_top = 20.0
 offset_right = 1900.0
@@ -216,6 +216,6 @@ stream = ExtResource("4_sgvee")
 [node name="jump_2" type="AudioStreamPlayer" parent="Audios"]
 stream = ExtResource("5_etcej")
 
-[connection signal="pressed" from="Camera2D/CanvasLayer/Main" to="." method="_on_main_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/Level_selector" to="Camera2D/CanvasLayer" method="_on_level_selector_pressed"]
 [connection signal="timeout" from="Camera2D/CanvasLayer/Timer" to="Camera2D/CanvasLayer" method="_on_timer_timeout"]
 [connection signal="timeout" from="Camera2D/CanvasLayer/Countdown" to="Camera2D/CanvasLayer" method="_on_countdown_timeout"]

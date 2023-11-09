@@ -7,4 +7,4 @@ func _on_main_menu_pressed():
 
 
 func _on_restart_pressed():
-	get_tree().change_scene_to_file("res://scene/world/level/level_3/level_3.tscn")
+	get_tree().change_scene_to_file("res://scene/world/level_selector.tscn")

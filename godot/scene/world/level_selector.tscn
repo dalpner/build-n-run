@@ -1,75 +1,103 @@
-[gd_scene format=3 uid="uid://cjlosy17odooc"]
+[gd_scene load_steps=2 format=3 uid="uid://cjlosy17odooc"]
+
+[ext_resource type="Script" path="res://scene/world/level_selector.gd" id="1_uvib2"]
 
 [node name="Level_Selector" type="Node2D"]
+script = ExtResource("1_uvib2")
 
 [node name="Level 1" type="Button" parent="."]
 offset_left = 48.0
 offset_top = 54.0
 offset_right = 432.0
 offset_bottom = 270.0
+text = "LEVEL 01"
 
 [node name="Level 2" type="Button" parent="."]
 offset_left = 528.0
 offset_top = 48.0
 offset_right = 912.0
 offset_bottom = 264.0
+text = "LEVEL 02"
 
 [node name="Level 3" type="Button" parent="."]
 offset_left = 1008.0
 offset_top = 48.0
 offset_right = 1392.0
 offset_bottom = 264.0
+text = "LEVEL 03"
 
 [node name="Level 4" type="Button" parent="."]
 offset_left = 1488.0
 offset_top = 48.0
 offset_right = 1872.0
 offset_bottom = 264.0
+text = "LEVEL 04"
 
 [node name="Level 5" type="Button" parent="."]
 offset_left = 48.0
 offset_top = 312.0
 offset_right = 432.0
 offset_bottom = 528.0
+text = "LEVEL 05"
 
 [node name="Level 6" type="Button" parent="."]
 offset_left = 528.0
 offset_top = 312.0
 offset_right = 912.0
 offset_bottom = 528.0
+text = "LEVEL 06"
 
 [node name="Level 7" type="Button" parent="."]
 offset_left = 1008.0
 offset_top = 312.0
 offset_right = 1392.0
 offset_bottom = 528.0
+text = "LEVEL 07"
 
 [node name="Level 8" type="Button" parent="."]
 offset_left = 1488.0
 offset_top = 312.0
 offset_right = 1872.0
 offset_bottom = 528.0
+text = "LEVEL 08"
 
 [node name="Level 9" type="Button" parent="."]
 offset_left = 48.0
 offset_top = 576.0
 offset_right = 432.0
 offset_bottom = 792.0
+text = "LEVEL 09"
 
 [node name="Level 10" type="Button" parent="."]
 offset_left = 528.0
 offset_top = 576.0
 offset_right = 912.0
 offset_bottom = 792.0
+text = "LEVEL 10"
 
 [node name="Level 11" type="Button" parent="."]
 offset_left = 1008.0
 offset_top = 576.0
 offset_right = 1392.0
 offset_bottom = 792.0
+text = "LEVEL 11"
 
 [node name="Level 12" type="Button" parent="."]
 offset_left = 1488.0
 offset_top = 576.0
 offset_right = 1872.0
 offset_bottom = 792.0
+text = "LEVEL 12"
+
+[node name="Main" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 888.0
+offset_right = 908.0
+offset_bottom = 988.0
+text = "MAIN MENU"
+
+[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level 4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Main" to="." method="_on_main_pressed"]
