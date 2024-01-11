@@ -20,6 +20,7 @@ format = 2
 layer_0/tile_data = PackedInt32Array(65534, 851968, 7, 65535, 917504, 7, 0, 917504, 7, 1, 983040, 7)
 
 [node name="Uptimer" type="Timer" parent="."]
+process_callback = 0
 
 [node name="MoveTimer" type="Timer" parent="."]
 

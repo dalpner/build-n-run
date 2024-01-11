@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://clphsce4ktdx2"]
+
+[ext_resource type="PackedScene" uid="uid://cj5wtvyn4f52r" path="res://scene/world/background.tscn" id="1_y87d5"]
+[ext_resource type="TileSet" uid="uid://o55jpwl5whag" path="res://scene/world/world.tres" id="2_ag38r"]
+[ext_resource type="PackedScene" uid="uid://dl2yload2l4j0" path="res://scene/player/player.tscn" id="3_utpse"]
+[ext_resource type="Script" path="res://scene/world/Flag.gd" id="4_0xuv1"]
+[ext_resource type="PackedScene" uid="uid://dxbmkqlhq45bo" path="res://scene/world/flag.tscn" id="5_fvsqr"]
+[ext_resource type="PackedScene" uid="uid://bfb7r3x0tbsyg" path="res://scene/world/Key.tscn" id="7_ip621"]
+[ext_resource type="Script" path="res://scene/world/LevelBorder.gd" id="8_4qyet"]
+[ext_resource type="PackedScene" uid="uid://p1pm4ytou6vp" path="res://scene/world/cloud.tscn" id="8_m8jk8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogkff"]
+size = Vector2(18, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ovbnx"]
+size = Vector2(433.505, 14.22)
+
+[node name="Level_1" type="Node2D"]
+position = Vector2(16, -8)
+
+[node name="Background" parent="." instance=ExtResource("1_y87d5")]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(40, 64)
+tile_set = ExtResource("2_ag38r")
+cell_quadrant_size = 18
+format = 2
+layer_0/tile_data = PackedInt32Array(1441792, 65536, 1, 1441793, 131072, 1, 1441794, 131072, 1, 1507328, 65536, 6, 1572864, 65536, 7, 1572866, 131072, 6, 1507330, 262144, 0, 1572865, 131072, 6, 1507329, 131072, 6, 1245184, 720896, 6, 1310720, 720896, 6, 1376256, 720896, 6, 1441795, 131072, 1, 1441796, 131072, 1, 1441797, 131072, 1, 1441798, 196608, 1, 1507334, 196608, 6, 1572870, 196608, 6, 1638407, 131072, 1, 1638408, 131072, 1, 1441802, 65536, 1, 1441803, 131072, 1, 1441804, 131072, 1, 1441805, 131072, 1, 1441808, 196608, 1, 1441807, 131072, 1, 1441806, 131072, 1, 1507338, 65536, 6, 1572874, 65536, 6, 1638409, 131072, 1, 1703936, 65536, 7, 1703952, 196608, 7, 1703951, 131072, 7, 1703950, 131072, 7, 1703949, 131072, 7, 1703948, 131072, 7, 1703947, 131072, 7, 1703946, 131072, 7, 1703945, 131072, 7, 1703944, 131072, 7, 1703943, 131072, 7, 1703942, 131072, 7, 1703941, 131072, 7, 1703940, 131072, 7, 1703939, 131072, 7, 1703938, 131072, 7, 1703937, 131072, 7, 1638401, 131072, 6, 1638402, 131072, 6, 1572867, 131072, 6, 1507331, 131072, 6, 1507332, 131072, 6, 1507333, 131072, 6, 1572869, 131072, 6, 1638405, 131072, 6, 1572868, 131072, 6, 1638403, 131072, 6, 1638404, 131072, 6, 1638411, 131072, 6, 1572875, 131072, 6, 1507339, 131072, 6, 1507340, 131072, 6, 1507341, 131072, 6, 1507342, 131072, 6, 1507343, 131072, 6, 1507344, 196608, 6, 1572880, 196608, 6, 1572879, 131072, 6, 1638414, 131072, 6, 1638413, 131072, 6, 1638412, 131072, 6, 1572876, 131072, 6, 1572877, 131072, 6, 1572878, 131072, 6, 1638415, 131072, 6, 1638416, 196608, 6, 1638400, 65536, 6, 1638406, 262144, 1, 1638410, 327680, 1, 1376283, 851968, 7, 1376284, 917504, 7, 1376285, 917504, 7, 1376286, 983040, 7, 1245218, 851968, 7, 1245219, 917504, 7, 1245220, 917504, 7, 1245221, 917504, 7, 1245222, 983040, 7)
+
+[node name="Player" parent="." instance=ExtResource("3_utpse")]
+position = Vector2(301, 373)
+
+[node name="Instruction" type="Label" parent="."]
+offset_left = 27.0
+offset_top = 134.0
+offset_right = 255.0
+offset_bottom = 160.0
+text = "Collect the 5 Keys and return!"
+
+[node name="Flag" type="Node" parent="."]
+script = ExtResource("4_0xuv1")
+
+[node name="Flag" parent="Flag" instance=ExtResource("5_fvsqr")]
+position = Vector2(64, 352)
+
+[node name="FinishArea" type="Area2D" parent="Flag"]
+position = Vector2(64, 352)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flag/FinishArea"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_ogkff")
+
+[node name="Keys" type="Node" parent="."]
+
+[node name="Key" parent="Keys" instance=ExtResource("7_ip621")]
+position = Vector2(294, 388)
+
+[node name="LevelBorder" type="Node" parent="."]
+script = ExtResource("8_4qyet")
+
+[node name="Level" type="Area2D" parent="LevelBorder"]
+position = Vector2(64, -24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelBorder/Level"]
+position = Vector2(736, 560)
+rotation = -3.14159
+scale = Vector2(5.145, 0.679999)
+shape = SubResource("RectangleShape2D_ovbnx")
+
+[node name="Keybox" type="Node" parent="."]
+
+[node name="BoomBox" type="Node" parent="."]
+
+[node name="Clouds" type="Node" parent="."]
+
+[node name="Cloud" parent="Clouds" instance=ExtResource("8_m8jk8")]
+position = Vector2(405, 405)
+
+[connection signal="body_entered" from="Flag/FinishArea" to="Flag" method="_on_finish_area_body_entered"]
+[connection signal="body_exited" from="LevelBorder/Level" to="LevelBorder" method="_on_level_body_exited"]
