@@ -17,7 +17,7 @@ func _on_body_entered(body):
 			$Uptimer.stop()
 			print($Uptimer.time_left)
 			var tween = create_tween()
-			if !moved && $Uptimer.time_left == 0:
+			if !moved:
 				moved = true
 				tween.tween_property(self, "position", position + Vector2(0,sink_distance), sink_time)
 
@@ -30,6 +30,6 @@ func _on_body_exited(body):
 func _on_uptimer_timeout():
 	if moved:
 		var tween = create_tween()
-		await(tween.tween_property(self, "position", position - Vector2(0,sink_distance), rise_time))
-		await get_tree().create_timer(rise_time).timeout
+		await(tween.tween_property(self, "position", position - Vector2(0,sink_distance), sink_time))
+		await get_tree().create_timer(sink_time).timeout
 		moved = false
